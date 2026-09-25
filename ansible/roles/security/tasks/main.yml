@@ -1,0 +1,24 @@
+---
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Allow SSH
+  command: ufw allow 22/tcp
+
+- name: Allow HTTP
+  command: ufw allow 80/tcp
+
+- name: Allow HTTPS
+  command: ufw allow 443/tcp
+
+- name: Set default incoming policy
+  command: ufw default deny incoming
+
+- name: Set default outgoing policy
+  command: ufw default allow outgoing
+
+- name: Enable UFW
+  command: ufw --force enable

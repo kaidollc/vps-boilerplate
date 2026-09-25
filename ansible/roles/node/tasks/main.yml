@@ -1,0 +1,34 @@
+
+- name: Download NVM installer
+  get_url:
+    url: "https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh"
+    dest: /tmp/install-nvm.sh
+    mode: '0755'
+
+- name: Install NVM for root
+  shell: /tmp/install-nvm.sh
+  args:
+    creates: /root/.nvm/nvm.sh
+
+- name: Install Node.js
+  shell: |
+    export NVM_DIR="/root/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    nvm install {{ node_version }}
+    nvm alias default {{ node_version }}
+  args:
+    executable: /bin/bash
+
+- name: Verify Node.js version
+  shell: |
+    export NVM_DIR="/root/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    node --version
+  args:
+    executable: /bin/bash
+  register: node_version_result
+  changed_when: false
+
+- name: Show Node.js version
+  debug:
+    msg: "{{ node_version_result.stdout }}"

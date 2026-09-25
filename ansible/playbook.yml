@@ -1,0 +1,13 @@
+
+- name: Configure application server
+  hosts: app_servers
+  become: yes
+
+  roles:
+    - common
+    - node
+    - pm2   
+    - nginx
+    - mysql
+    - security
+

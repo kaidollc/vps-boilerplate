@@ -1,0 +1,23 @@
+---
+- name: Install MySQL server
+  apt:
+    name:
+      - mysql-server
+      - mysql-client
+    state: present
+    update_cache: yes
+
+- name: Enable MySQL
+  systemd:
+    name: mysql
+    enabled: yes
+    state: started
+
+- name: Check MySQL service
+  command: systemctl is-active mysql
+  register: mysql_status
+  changed_when: false
+
+- name: Show MySQL status
+  debug:
+    msg: "MySQL status: {{ mysql_status.stdout }}"

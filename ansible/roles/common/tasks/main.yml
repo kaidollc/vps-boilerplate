@@ -1,0 +1,26 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install common packages
+  apt:
+    name:
+      - curl
+      - wget
+      - git
+      - unzip
+      - vim
+      - htop
+      - ca-certificates
+      - build-essential
+    state: present
+
+- name: Create application directory
+  file:
+    path: /var/www
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"

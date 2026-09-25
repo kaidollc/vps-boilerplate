@@ -1,0 +1,4 @@
+---
+node_version: "14.21.3"
+nvm_version: "0.40.1"
+pm2_version: "5.4.2"

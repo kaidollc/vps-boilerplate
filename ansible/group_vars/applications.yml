@@ -1,0 +1,38 @@
+---
+applications:
+
+  - name: account-service-prod
+    path: /var/www/account-service
+    type: node
+
+  - name: auth-service-prod
+    path: /var/www/auth-service
+    type: node
+
+  - name: alshifa-api-stag
+    path: /var/www/alwasila
+    type: node
+
+  - name: anas-api
+    path: /var/www/anas-watches
+    type: node
+
+  - name: ecomlence-web-prod
+    path: /var/www/ecomlence
+    type: node
+
+  - name: huma-WMS-stag
+    path: /var/www/humeRef
+    type: node
+
+  - name: lib-api-stag
+    path: /var/www/LibraryManagement
+    type: node
+
+  - name: rehensehen-api-stag
+    path: /var/www/rehensehen
+    type: node
+
+  - name: shifa-api-prod
+    path: /var/www/alwasila
+    type: node
