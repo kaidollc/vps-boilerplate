@@ -15,6 +15,7 @@
       - htop
       - ca-certificates
       - build-essential
+      - awscli
     state: present
 
 - name: Create application directory
